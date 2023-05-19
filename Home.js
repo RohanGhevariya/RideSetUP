@@ -10,8 +10,17 @@ import {
   Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+const Tab = createBottomTabNavigator();
 const { width } = Dimensions.get("window");
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+    </Tab.Navigator>
+  );
+}
 
 const Home = ({ navigation }) => {
   return (
@@ -64,15 +73,38 @@ const Home = ({ navigation }) => {
           <Text>Sabha</Text>
         </TouchableOpacity>
       </ScrollView>
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.touchableOpacity}
-          onPress={() => navigation.navigate("Users")}
-        >
-          <Icon name={"user"} size={30} color="#01a699" />
-          <Text>Users</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.view1}>
+            <Icon name={"car"} size={30} color="#01a699" />
+            <Text>Ride Set Up</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.view1}>
+            <Icon name={"car"} size={30} color="#01a699" />
+            <Text>Ride Set Up</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.view1}>
+            <Icon name={"car"} size={30} color="#01a699" />
+            <Text>Ride Set Up</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.view1}>
+            <Icon name={"car"} size={30} color="#01a699" />
+            <Text>Ride Set Up</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.view1}>
+            <Icon name={"car"} size={30} color="#01a699" />
+            <Text>Ride Set Up</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </View>
 
     // <View style={styles.container}>
@@ -116,7 +148,7 @@ const styles = StyleSheet.create({
   view: {
     marginTop: 100,
     backgroundColor: "#ffff",
-    width: width - 80,
+    width: width - 70,
     margin: 10,
     height: 200,
     borderRadius: 10,
@@ -127,6 +159,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowColor: "black",
     //paddingHorizontal : 30
+  },
+  view1: {
+    marginTop: 20,
+    marginLeft: 40,
+    backgroundColor: "#D13927",
+    width: width - 70,
+    height: 80,
+    borderRadius: 10,
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   touchableOpacity: {
     flex: 1,
