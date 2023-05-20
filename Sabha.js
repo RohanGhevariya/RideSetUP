@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-const Ride = ({ navigation }) => {
+const Sabha = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignContent: "center" }}>
-      <Text style={{}}>Ride setup</Text>
+      <Text style={{}}>Sabha attendence</Text>
       <Button
         title="Press"
         onPress={() => navigation.navigate("Home")}
@@ -12,4 +12,4 @@ const Ride = ({ navigation }) => {
     </View>
   );
 };
-export default Ride;
+export default Sabha;

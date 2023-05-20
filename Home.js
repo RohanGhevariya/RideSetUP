@@ -75,72 +75,16 @@ const Home = ({ navigation }) => {
       </ScrollView>
       <ScrollView>
         <View style={styles.container}>
-          <TouchableOpacity style={styles.view1}>
-            <Icon name={"car"} size={30} color="#01a699" />
-            <Text>Ride Set Up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.view1}>
-            <Icon name={"car"} size={30} color="#01a699" />
-            <Text>Ride Set Up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.view1}>
-            <Icon name={"car"} size={30} color="#01a699" />
-            <Text>Ride Set Up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.view1}>
-            <Icon name={"car"} size={30} color="#01a699" />
-            <Text>Ride Set Up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.container}>
-          <TouchableOpacity style={styles.view1}>
+          <TouchableOpacity
+            style={styles.view1}
+            onPress={() => navigation.navigate("Ride")}
+          >
             <Icon name={"car"} size={30} color="#01a699" />
             <Text>Ride Set Up</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
-
-    // <View style={styles.container}>
-    //   <View style={styles.fixToText}>
-    //     <TouchableOpacity
-    //       style={styles.touchableOpacity}
-    //       onPress={() => navigation.navigate("Users")}
-    //     >
-    //       <Icon name={"user"} size={30} color="#01a699" />
-    //       <Text>Users</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity
-    //       style={styles.touchableOpacity}
-    //       onPress={() => navigation.navigate("Houses")}
-    //     >
-    //       <Icon name={"home"} size={30} color="#01a699" />
-    //       <Text>House</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    //   <View style={styles.fixToText}>
-    //     <TouchableOpacity
-    //       style={styles.touchableOpacity}
-    //       onPress={() => navigation.navigate("Birthdays")}
-    //     >
-    //       <Icon name={"birthday-cake"} size={30} color="#01a699" />
-    //       <Text>BirthDays</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity
-    //       style={styles.touchableOpacity}
-    //       onPress={() => navigation.navigate("Birthdays")}
-    //     >
-    //       <Icon name={"users"} size={30} color="#01a699" />
-    //       <Text>Sabha</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // </View>
   );
 };
 const styles = StyleSheet.create({
