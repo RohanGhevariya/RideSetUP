@@ -35,7 +35,6 @@ const Home = ({ navigation }) => {
         decelerationRate={0}
         snapToInterval={width - 60}
         snapToAlignment={"center"}
-        showsHorizontalScrollIndicator="False"
         contentInset={{
           top: 0,
           left: 30,
