@@ -23,9 +23,13 @@ const DATA = [
   },
 ];
 
-const openLinkedApps = () => {
+const LocationHandler = () => {
   const location = "geo:latitude,longitude?q=43.765709,-79.255783";
   Linking.openURL(location);
+};
+const WhatsAppHandler = (contact) => {
+  const phone = "whatsapp://send?phone=+1234567890";
+  Linking.openURL(phone);
 };
 const Item = ({ title, BirthDate, House, contact, image }) => (
   <View
@@ -74,7 +78,7 @@ const Item = ({ title, BirthDate, House, contact, image }) => (
             ></Image>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={openLinkedApps}
+            onPress={LocationHandler}
             style={styles.touchableOpacity}
           >
             <Image
@@ -83,7 +87,7 @@ const Item = ({ title, BirthDate, House, contact, image }) => (
             ></Image>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={openLinkedApps}
+            onPress={WhatsAppHandler}
             style={styles.touchableOpacity}
           >
             <Image
