@@ -5,7 +5,7 @@ import { View, TextInput, Button, Text, StyleSheet } from "react-native";
 import { authentication } from "../authentication/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ navigation }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,9 +15,12 @@ const RegisterScreen = () => {
       .then((userCredential) => {
         console.log(userCredential);
         setIsSignedIn(true);
+        alert("Registration completed!");
+        navigation.navigate("Login");
       })
-      .catch((re) => {
-        console.log(re);
+      .catch((err) => {
+        console.log(err);
+        alert("Please enter valid email or password");
       });
   };
 

@@ -12,6 +12,7 @@ import Ride from "./Ride";
 import Sabha from "./Sabha";
 import LoginScreen from "./src/Login/Login";
 import RegisterScreen from "./src/Login/Registration";
+import Splash from "./src/Splash";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,6 +20,11 @@ const Tab = createBottomTabNavigator();
 function Homestack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        component={Splash}
+        name="Splash"
+      />
       <Stack.Screen
         options={{ headerShown: false }}
         name="Login"

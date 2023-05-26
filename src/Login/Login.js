@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#eef2f3",
   },
   textBoxes: {
     width: "90%",
