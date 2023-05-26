@@ -10,6 +10,8 @@ import Birthdays from "./Birthdays";
 import Houses from "./Houses";
 import Ride from "./Ride";
 import Sabha from "./Sabha";
+import LoginScreen from "./src/Login/Login";
+import RegisterScreen from "./src/Login/Registration";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,6 +19,12 @@ const Tab = createBottomTabNavigator();
 function Homestack() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Login"
+        component={LoginScreen}
+      />
+      <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen
         options={{ headerShown: true }}
         name="Home"

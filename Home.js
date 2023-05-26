@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { authentication } from "./src/authentication/firebase";
 
 const Tab = createBottomTabNavigator();
 const { width } = Dimensions.get("window");
@@ -23,6 +24,24 @@ function MyTabs() {
 }
 
 const Home = ({ navigation }) => {
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerRight: () => <Button title="Logout" onPress={handleLogout} />,
+  //   });
+  // }, [navigation]);
+
+  // const handleLogout = () => {
+  //   authentication
+  //     .signOut()
+  //     .then(() => {
+  //       // User successfully logged out
+  //       console.log("User logged out");
+  //       navigation.navigate("Login");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Logout error:", error.message);
+  //     });
+  // };
   return (
     <View style={styles.container}>
       <ScrollView
