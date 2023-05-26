@@ -19,6 +19,7 @@ const LoginScreen = ({ navigation }) => {
       })
       .catch((re) => {
         console.log(re.message);
+        alert("Incorrect User name or Password", re.message);
       });
   };
   // const SignOutUser = () => {
