@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,9 +8,11 @@ import {
   Image,
   FlatList,
   SafeAreaView,
+  TextInput,
   StatusBar,
   Linking,
 } from "react-native";
+import firebase from "./src/authentication/firebase";
 
 const DATA = [
   {
@@ -102,6 +104,35 @@ const Item = ({ title, BirthDate, House, contact, image }) => (
 );
 
 const Users = ({ navigation }) => {
+  const userData = firebase.firestore().collection("newUserData");
+  const [showForm, setShowForm] = useState(false);
+  const [destination, setDestination] = useState("");
+  const [distance, setDistance] = useState("");
+
+  const addRide = () => {
+    const ride = {
+      destination,
+      distance,
+    };
+
+    firebase
+      .database()
+      .ref("rides")
+      .push(ride)
+      .then(() => {
+        // Ride added successfully
+        console.log("Ride added successfully");
+        toggleForm();
+      })
+      .catch((error) => {
+        // Error occurred while adding the ride
+        console.log("Error adding ride:", error);
+      });
+  };
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
   return (
     <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight || 0 }}>
       <FlatList
@@ -119,9 +150,40 @@ const Users = ({ navigation }) => {
       >
         <Text>Name:</Text>
       </FlatList>
-      <TouchableOpacity onPress={() => alert("FAB clicked")} style={styles.fab}>
-        <Text style={styles.fabIcon}>+</Text>
-      </TouchableOpacity>
+      <View style={{}}>
+        {showForm ? (
+          <View
+            style={{
+              alignContent: "center",
+              justifyContent: "center",
+              padding: 10,
+              marginBottom: 150,
+            }}
+          >
+            <View style={styles.formContainer}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  alignSelf: "center",
+                  marginBottom: 10,
+                }}
+              >
+                Add User
+              </Text>
+              <TextInput style={styles.input} placeholder="Destination" />
+              <TextInput style={styles.input} placeholder="Distance" />
+              <View style={styles.buttonContainer}>
+                <Button title="Add Ride" onPress={addRide} />
+                <Button title="Cancel" onPress={toggleForm} />
+              </View>
+            </View>
+          </View>
+        ) : (
+          <TouchableOpacity onPress={toggleForm} style={styles.fab}>
+            <Text style={styles.fabIcon}>+</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </SafeAreaView>
   );
 };
@@ -159,6 +221,26 @@ const styles = StyleSheet.create({
     padding: 8,
     alignSelf: "stretch",
     justifyContent: "space-between",
+  },
+  formContainer: {
+    width: "100%",
+    marginBottom: 20,
+    padding: 30,
+    backgroundColor: "#f0f0f0",
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: "#FDFEFE",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
   },
 });
 export default Users;
