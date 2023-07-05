@@ -1,14 +1,24 @@
 // LoginScreen.js
 
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet, Text } from "react-native";
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { authentication } from "../authentication/firebase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const LoginScreen = ({ navigation }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     signInWithEmailAndPassword(authentication, email, password)
@@ -88,8 +98,21 @@ const LoginScreen = ({ navigation }) => {
         style={styles.textBoxes}
         placeholder="Password"
         onChangeText={(text) => setPassword(text)}
-        secureTextEntry
+        secureTextEntry={!showPassword}
       />
+      <TouchableOpacity
+        onPress={() => setShowPassword(!showPassword)}
+        style={styles.eyeIconContainer}
+      >
+        <Image
+          source={
+            showPassword
+              ? require("../images/view.png")
+              : require("../images/hide.png")
+          }
+          style={styles.eyeIcon}
+        />
+      </TouchableOpacity>
       <Button title="Log In" onPress={handleLogin} />
       {/* {isSignedIn === true ? (
         <Button title="Sign Out" onPress={SignOutUser} />
@@ -111,12 +134,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#eef2f3",
   },
   textBoxes: {
-    width: "90%",
+    width: "85%",
     padding: 12,
     backgroundColor: "#fff",
     borderRadius: 10,
     borderWidth: 0.2,
     fontSize: 18,
+    flexDirection: "row",
+  },
+  eyeIconContainer: {
+    position: "absolute",
+    right: 50,
+    top: "57%",
+    transform: [{ translateY: -10 }], // Adjust the vertical position of the icon
+  },
+  eyeIcon: {
+    width: 20,
+    height: 20,
   },
 });
 

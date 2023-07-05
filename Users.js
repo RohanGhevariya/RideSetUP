@@ -104,7 +104,7 @@ const Item = ({ title, BirthDate, House, contact, image }) => (
 );
 
 const Users = ({ navigation }) => {
-  const userData = firebase.firestore().collection("newUserData");
+  //const userData = firebase.firestore().collection("newUserData");
   const [showForm, setShowForm] = useState(false);
   const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState("");
